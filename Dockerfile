@@ -38,7 +38,7 @@ WORKDIR ${FLYWHEEL}
 COPY run .
 COPY manifest.json .
 COPY dicom-mr-classifier.py .
-COPY classification_from_label.py.
+COPY classification_from_label.py .
 RUN chmod +x run classification_from_label.py
 
 
