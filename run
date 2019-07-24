@@ -37,8 +37,8 @@ function parse_config {
 
 TZ="$(parse_config 'timezone')"
 echo "${CONTAINER}  Setting time zone to: $TZ"
-echo "$TZ" > /etc/timezone && sudo ln -snf /usr/share/zoneinfo/"$TZ" /etc/localtime
-sudo dpkg-reconfigure -f noninteractive tzdata
+echo "$TZ" > /etc/timezone && ln -snf /usr/share/zoneinfo/"$TZ" /etc/localtime
+dpkg-reconfigure -f noninteractive tzdata
 
 
 ##############################################################################
