@@ -8,12 +8,16 @@
   "source": "https://github.com/scitran-apps/dicom-mr-classifier",
   "license": "Apache-2.0",
   "flywheel": "0",
-  "version": "0.9.0",
+  "version": "0.9.0-runsc",
   "custom": {
-    "docker-image": "scitran/dicom-mr-classifier:0.9.0",
+    "gear-builder": {
+      "image": "scitran/dicom-mr-classifier:0.9.0-runsc",
+      "category": "converter"
+    },
+    "docker-image": "scitran/dicom-mr-classifier:0.9.0-runsc",
     "flywheel": {
-      "uid": 1000,
-      "gid": 1000
+      "suite": "SciTran",
+      "module": "runsc"
     }
   },
   "config": {
@@ -32,9 +36,6 @@
         ]
       },
       "description": "Archive (.zip) containing DICOM files."
-    },
-    "classifications": {
-      "base": "context"
     }
   }
 }

@@ -33,20 +33,11 @@ RUN pip install \
 # Make directory for flywheel spec (v0)
 ENV FLYWHEEL /flywheel/v0
 WORKDIR ${FLYWHEEL}
-COPY run \
-     run_classifier \
-     manifest.json \
-     ${FLYWHEEL}/
-
-# Create Flywheel User
-RUN adduser --disabled-password --gecos "Flywheel User" flywheel
-
-# Add code to determine classification from dicom descrip (label)
-COPY classification_from_label.py ${FLYWHEEL}/classification_from_label.py
-RUN chmod +x ${FLYWHEEL}/run* && chown flywheel ${FLYWHEEL}/classification_from_label.py
-
-# Copy classifier code into place
-COPY dicom-mr-classifier.py ${FLYWHEEL}/dicom-mr-classifier.py
+COPY run .
+COPY manifest.json .
+COPY dicom-mr-classifier.py .
+COPY classification_from_label.py .
+RUN chmod +x run classification_from_label.py
 
 # Set the entrypoint
 ENTRYPOINT ["/flywheel/v0/run"]
